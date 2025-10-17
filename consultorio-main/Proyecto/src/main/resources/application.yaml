@@ -1,0 +1,73 @@
+app:
+  name: proyecto
+  database:
+    url: jdbc:mariadb://localhost:3306/
+    database: consultorio
+    user: root
+    password: password
+
+logging:
+  level:
+    com:
+      desarrollo: DEBUG
+    org:
+      springframework:
+        boot:
+          web:
+            embedded:
+              tomcat:
+                TomcatWebServer: INFO
+        security:
+          oauth2: TRACE
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+    liquibase:
+      changelog: TRACE
+      logging: TRACE
+      lockservice: TRACE
+      database: TRACE
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: 8100
+  servlet:
+    application-display-name: proyecto
+    context-path: /
+    session:
+      cookie:
+        http-only: true
+      tracking-modes: cookie
+  tomcat:
+    accesslog:
+      enabled: true
+    basedir: /
+
+spring:
+  application:
+    name: proyecto
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        jdbc:
+          bacth_size: 10
+          batch_versioned_data: true
+        order_updates: true
+  liquibase:
+    change-log: proyecto-changelog.xml
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: principal
