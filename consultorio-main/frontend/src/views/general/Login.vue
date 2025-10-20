@@ -54,8 +54,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { securityStore } from '@/addons/store/general/security';
 
+const router = useRouter();
 const security = securityStore();
 
 const cred = ref({
@@ -68,7 +70,7 @@ const handleLogin = () => {
 };
 
 const irARecuperarPassword = () => {
-  alert('Función de recuperación de contraseña - Por implementar');
+  router.push({ name: 'ConfirmarNuevaPassword' });
 };
 </script>
 
