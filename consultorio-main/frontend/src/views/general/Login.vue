@@ -1,18 +1,60 @@
 <template>
-  <div class="card flex justify-center">
-    <div class="flex flex-col gap-1">
-      <InputText name="username" type="text" placeholder="Username" v-model="cred.username" />
+  <div class="main-content">
+    <div class="content">
+      <div class="login-container">
+        <div class="login-logo">
+          <img src="@/assets/Logo.png" alt="Logo" />
+        </div>
+        <h1>Iniciar sesión</h1>
+
+        <form id="form-simple" @submit.prevent="handleLogin">
+          <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                v-model="cred.username"
+                required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="clave">Contraseña</label>
+            <input
+                type="password"
+                id="clave"
+                name="clave"
+                v-model="cred.password"
+                required
+            />
+          </div>
+
+          <div class="form-buttons">
+            <button
+                type="submit"
+                class="btn btn-primary"
+            >
+              Iniciar sesión
+            </button>
+            <button
+                type="button"
+                id="btn-back-simple"
+                class="btn btn-secondary"
+                @click="irARecuperarPassword"
+            >
+              Enviar contraseña por email
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="flex flex-col gap-1">
-      <InputText name="password" type="password" placeholder="Password" v-model="cred.password" />
-    </div>
-    <Button type="submit" severity="success" label="Iniciar Sesion" @click="security.login( cred )" />
   </div>
 </template>
 
-<script lang="ts" setup>
-import { securityStore } from "@/addons/store/general/security.ts";
-import {ref} from "vue";
+<script setup lang="ts">
+import { ref } from 'vue';
+import { securityStore } from '@/addons/store/general/security';
 
 const security = securityStore();
 
@@ -21,4 +63,57 @@ const cred = ref({
   password: ''
 });
 
+const handleLogin = () => {
+  security.login(cred.value);
+};
+
+const irARecuperarPassword = () => {
+  alert('Función de recuperación de contraseña - Por implementar');
+};
 </script>
+
+<style scoped>
+/* Estilos adicionales específicos del login */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-logo {
+  margin-bottom: 20px;
+}
+
+.login-logo img {
+  height: 150px;
+}
+
+.login-container h1 {
+  margin-bottom: 25px;
+  color: var(--primary-color);
+}
+
+#form-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-buttons .btn {
+  width: 100%;
+  max-width: 250px;
+}
+
+</style>
