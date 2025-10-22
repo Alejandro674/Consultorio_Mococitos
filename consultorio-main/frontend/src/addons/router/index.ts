@@ -12,14 +12,12 @@ let index = createRouter({
             meta: { guest: true },
             beforeEnter: () => { return securityStore().getJwt ? false : true }
         },
-
         {
             path: "/confirmar-nueva-password",
             name: "ConfirmarNuevaPassword",
             component: () => import("@/views/general/ConfirmarNuevaPassword.vue"),
             meta: { guest: true }
         },
-
         {
             path: "/nueva-password-generada",
             name: "NuevaPasswordGenerada",
@@ -32,8 +30,14 @@ let index = createRouter({
             path: "/",
             name: "Index",
             component: () => import("@/views/general/Index.vue"),
+            redirect: "/calendario",
             children: [
-                { path: "/home", name: "Home", component: () => import("@/views/general/Home.vue") }
+                {
+                    path: "/calendario",
+                    name: "Calendario",
+                    component: () => import("@/views/general/MenuCalendario.vue")
+                }
+
             ]
         }
     ]

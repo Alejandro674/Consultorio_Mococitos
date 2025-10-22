@@ -6,7 +6,7 @@ import { auth, setHeader } from "@/plugins/setupInterceptor.ts";
 
 export const securityStore = defineStore("security", {
     state: () => ({
-        jwt: null as string | null, // ✅ ahora acepta string o null
+        jwt: null as string | null,
         user: {} as any
     }),
     getters: {
@@ -39,7 +39,7 @@ export const securityStore = defineStore("security", {
                 .then((response) => {
                     auth(response.headers.authorization);
                     this.decodificarToken(response.headers.authorization);
-                    router.push("Home");
+                    router.push("/calendario");
                 })
                 .finally(() => {});
         },

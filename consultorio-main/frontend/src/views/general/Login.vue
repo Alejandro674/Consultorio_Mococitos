@@ -67,6 +67,8 @@ const cred = ref({
 
 const handleLogin = () => {
   security.login(cred.value);
+  // Nota: El router.push se hace automáticamente en security.login()
+  // que redirige a 'Home', pero podemos cambiarlo
 };
 
 const irARecuperarPassword = () => {
@@ -117,5 +119,4 @@ const irARecuperarPassword = () => {
   width: 100%;
   max-width: 250px;
 }
-
 </style>
