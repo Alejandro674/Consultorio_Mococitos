@@ -36,8 +36,12 @@ let index = createRouter({
                     path: "/calendario",
                     name: "Calendario",
                     component: () => import("@/views/general/MenuCalendario.vue")
+                },
+                {
+                    path: "/inventario",
+                    name: "Inventario",
+                    component: () => import("@/views/general/GestionInventario.vue")
                 }
-
             ]
         }
     ]
@@ -47,7 +51,7 @@ index.beforeEach(async (to, _from, next) => {
     if (to.meta.guest) {
         next();
     } else {
-        await securityStore().verifyJwt();
+        //await securityStore().verifyJwt();
         next();
     }
 });

@@ -126,7 +126,7 @@
 
 <script setup lang="ts">
 //import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import {ref, computed, onMounted, shallowRef} from 'vue';
+import {ref, computed, onMounted} from 'vue';
 import { useRouter } from 'vue-router';
 import FullCalendar from '@fullcalendar/vue3';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -221,7 +221,7 @@ const calendarOptions = ref({
   },
   selectable: true,
   editable: true,
-  events: eventos.value,
+  events: eventos,
   dateClick: handleDateClick,
   eventClick: handleEventClick
 });
