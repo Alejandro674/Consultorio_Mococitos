@@ -41,6 +41,11 @@ let index = createRouter({
                     path: "/inventario",
                     name: "Inventario",
                     component: () => import("@/views/general/GestionInventario.vue")
+                },
+                {
+                    path: "/pacientes",
+                    name: "Pacientes",
+                    component: () => import("@/views/general/MenuPacientes.vue")
                 }
             ]
         }
