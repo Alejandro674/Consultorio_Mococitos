@@ -24,7 +24,6 @@ let index = createRouter({
             component: () => import("@/views/general/NuevaPasswordGenerada.vue"),
             meta: { guest: true }
         },
-
         // ========== RUTAS PROTEGIDAS (requieren autenticación) ==========
         {
             path: "/",
@@ -41,6 +40,16 @@ let index = createRouter({
                     path: "/inventario",
                     name: "Inventario",
                     component: () => import("@/views/general/GestionInventario.vue")
+                },
+                {
+                    path: "/administrar-paciente",
+                    name: "AdministrarPaciente",
+                    component: () => import("@/views/general/AdministrarPaciente.vue")
+                },
+                {
+                    path: "/reportes",
+                    name: "GestionReportes",
+                    component: () => import("@/views/general/GestionReportes.vue")
                 }
             ]
         }
