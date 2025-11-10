@@ -32,20 +32,13 @@ let index = createRouter({
             component: () => import("@/views/general/Index.vue"),
             redirect: "/calendario",
             children: [
+                { path: "/calendario", name: "Calendario", component: () => import("@/views/general/MenuCalendario.vue") },
+                { path: "/inventario", name: "Inventario", component: () => import("@/views/general/GestionInventario.vue") },
+                { path: "/pacientes", name: "Pacientes", component: () => import("@/views/general/MenuPacientes.vue") },
                 {
-                    path: "/calendario",
-                    name: "Calendario",
-                    component: () => import("@/views/general/MenuCalendario.vue")
-                },
-                {
-                    path: "/inventario",
-                    name: "Inventario",
-                    component: () => import("@/views/general/GestionInventario.vue")
-                },
-                {
-                    path: "/pacientes",
-                    name: "Pacientes",
-                    component: () => import("@/views/general/MenuPacientes.vue")
+                    path: "/pagos",
+                    name: "Pagos",
+                    component: () => import("@/views/general/GestionPagos.vue")
                 }
             ]
         }
