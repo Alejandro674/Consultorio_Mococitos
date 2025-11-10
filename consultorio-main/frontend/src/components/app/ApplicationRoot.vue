@@ -97,7 +97,9 @@ watch(
         '/calendario': 'Inicio / Calendario',
         '/pacientes': 'Gestionar Pacientes',
         '/pagos': 'Gestionar Pagos',
-        '/inventario': 'Gestión de Inventario'
+        '/inventario': 'Gestión de Inventario',
+        '/administrar-paciente': 'Administrar Pacientes',
+        '/reportes': 'Editor de Documentos '
       };
       pageTitle.value = titles[newPath] || 'Dashboard';
 

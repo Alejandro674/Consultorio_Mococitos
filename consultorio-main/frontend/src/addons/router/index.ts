@@ -35,14 +35,15 @@ let index = createRouter({
                 { path: "/calendario", name: "Calendario", component: () => import("@/views/general/MenuCalendario.vue") },
                 { path: "/inventario", name: "Inventario", component: () => import("@/views/general/GestionInventario.vue") },
                 { path: "/pacientes", name: "Pacientes", component: () => import("@/views/general/MenuPacientes.vue") },
-                {
-                    path: "/pagos",
-                    name: "Pagos",
-                    component: () => import("@/views/general/GestionPagos.vue")
-                }
+                { path: "/pagos", name: "Pagos", component: () => import("@/views/general/GestionPagos.vue") },
+                { path: "/administrar-paciente", name: "AdministrarPaciente", component: () => import("@/views/general/AdministrarPaciente.vue") },
+                { path: "/reportes", name: "GestionReportes", component: () => import("@/views/general/GestionReportes.vue") }
             ]
         }
-    ]
+    ],
+    scrollBehavior() {
+        return { top: 0 };
+    }
 });
 
 index.beforeEach(async (to, _from, next) => {
