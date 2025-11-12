@@ -14,7 +14,7 @@ export const securityStore = defineStore("security", {
         getUser: (state) => state.user
     },
     actions: {
-        verifyJwt() { // ✅ eliminamos 'next' no usado
+        verifyJwt() {
             if (this.getJwt) {
                 const decodedJwt: any = VueJwtDecode.decode(this.getJwt);
                 const tiempo = decodedJwt.exp - Math.round(Date.now() / 1000);
@@ -56,7 +56,7 @@ export const securityStore = defineStore("security", {
 
         limpiarStores() {
             const pinia = getActivePinia();
-            if (!pinia) return; // ✅ previene error “possibly undefined”
+            if (!pinia) return;
             const stores = Object.keys(pinia.state.value);
             stores.forEach((store) => {
                 this.limpiarStore(store);
@@ -66,7 +66,7 @@ export const securityStore = defineStore("security", {
         },
 
         limpiarStore(store: string) {
-            const pinia = getActivePinia() as any; // ✅ evitamos error de tipo
+            const pinia = getActivePinia() as any;
             const piniaStore = pinia?._s?.get(store);
             if (piniaStore && typeof piniaStore.$reset === "function") {
                 piniaStore.$reset();
